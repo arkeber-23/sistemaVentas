@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75d53dd4-3b45-46a8-a023-8b64dfedb43b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     tab_productos.`NOMBRE_PR` ,
+     tab_productos.`TALLA_PR`,
+     tab_productos.`COLOR_PR` ,
+     tab_productos.`PRECIO_PR` ,
+     tab_marcas.`MARCA`,
+     tab_productos.`ID_MARCA` ,
+     tab_productos.`ID_PRDUCTO` 
+FROM
+     `tab_marcas` tab_marcas INNER JOIN `tab_productos` tab_productos ON tab_marcas.`ID_MARCA` = tab_productos.`ID_MARCA`]]>
+	</queryString>
+	<field name="NOMBRE_PR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TALLA_PR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="COLOR_PR" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PRECIO_PR" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MARCA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ID_MARCA" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ID_PRDUCTO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="164" height="126" uuid="eb14d775-fe99-4cf8-87a3-cabf101aa383"/>
+				<imageExpression><![CDATA["img/coffe.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="198" y="0" width="417" height="62" uuid="9fe3ca28-4fa6-4e9e-9d92-55372a9aa884"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Lista de Productos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="198" y="62" width="403" height="64" uuid="4d6950be-adf5-4cc7-90c3-f6b89b338284"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[El pasado 21 de enero se celebró en la Ciudad del Futbol de Las Rozas el sorteo de cuartos de final de la Copa del Rey de futbol sala con dos segundas (Talavera y Real Betis) en los bombos. Los partidos se disputarán el 12 de febrero a partido único.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="633" y="-73" width="219" height="209" uuid="53f5f08d-88b9-4459-a772-d077612dea2f"/>
+				<imageExpression><![CDATA["img/coffee_stain.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="802" height="1" uuid="28a615b2-6c5e-4a78-a02f-f3785a358fa8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="114" height="15" forecolor="#736343" uuid="13521431-dec8-47a8-8588-47773b83329f"/>
+				<text><![CDATA[NOMBRE_PR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="114" y="0" width="114" height="15" forecolor="#736343" uuid="26cbc6cb-d5a8-4edc-b973-2ed6b6f6c277"/>
+				<text><![CDATA[TALLA_PR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="228" y="0" width="114" height="15" forecolor="#736343" uuid="d069f8b3-f284-4884-99ba-7b5940563f99"/>
+				<text><![CDATA[COLOR_PR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="342" y="0" width="114" height="15" forecolor="#736343" uuid="ddfa4c0f-71ec-4485-a71e-5bedba797f00"/>
+				<text><![CDATA[PRECIO_PR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="0" width="114" height="15" forecolor="#736343" uuid="8f054a32-4eb5-4a56-a5e2-25e5b3f1ddbb"/>
+				<text><![CDATA[MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="570" y="0" width="114" height="15" forecolor="#736343" uuid="37c0798f-f124-495d-b9d2-b1b1b577480d"/>
+				<text><![CDATA[ID_MARCA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="684" y="0" width="114" height="15" forecolor="#736343" uuid="fee916ba-2efc-4d89-9b26-778acf199058"/>
+				<text><![CDATA[ID_PRDUCTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="802" height="15" uuid="4c3af91e-775c-4dc4-bd5f-39d5dd150e79"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="0" y="0" width="114" height="15" uuid="d871ced8-591a-4b70-9d34-efdb22776a6e"/>
+					<textFieldExpression><![CDATA[$F{NOMBRE_PR}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="114" y="0" width="114" height="15" uuid="c607e376-430b-4025-9f2f-821141a0aba2"/>
+					<textFieldExpression><![CDATA[$F{TALLA_PR}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="228" y="0" width="114" height="15" uuid="1dbe9bd8-7ddf-4aeb-b571-7ddaf24a6d62"/>
+					<textFieldExpression><![CDATA[$F{COLOR_PR}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="342" y="0" width="114" height="15" uuid="be811845-0f49-4680-b223-de4c6402291c"/>
+					<textFieldExpression><![CDATA[$F{PRECIO_PR}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="456" y="0" width="114" height="15" uuid="5306b28a-f7ca-421c-b8f0-e4485b5dab52"/>
+					<textFieldExpression><![CDATA[$F{MARCA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="570" y="0" width="114" height="15" uuid="83a88f5e-5565-4344-b715-4fecd19ebeaf"/>
+					<textFieldExpression><![CDATA[$F{ID_MARCA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" x="684" y="0" width="114" height="15" uuid="3b65e4d0-1d22-4ec0-96b5-594d1449d809"/>
+					<textFieldExpression><![CDATA[$F{ID_PRDUCTO}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="802" height="1" uuid="d65b65a6-78d3-433c-850b-3cca84ded927"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="843" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="56549c1c-bf7c-4832-a5aa-c7c2bc53b7fa"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="783" y="1" width="40" height="20" forecolor="#736343" uuid="7c05d802-35fe-4134-a5ce-f9e0529d823f"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="703" y="1" width="80" height="20" forecolor="#736343" uuid="0c2b5702-46b7-4676-81db-1831bb47dc0f"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="fc12a5da-2161-4038-b0a4-3715489b7908"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
