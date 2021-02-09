@@ -7,7 +7,10 @@ package vista.formularios;
 
 import controlador.ProveedoreJpaController;
 import controlador.exceptions.NonexistentEntityException;
+import java.awt.Color;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
@@ -55,7 +58,7 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         txtEmail = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
+        separador = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         btnGuardar = new javax.swing.JButton();
@@ -84,7 +87,7 @@ public class frmProveedor extends javax.swing.JInternalFrame {
 
         jLabel3.setFont(new java.awt.Font("Rockwell Nova Extra Bold", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel3.setText("Dirrecion:");
+        jLabel3.setText("Direccion:");
 
         jLabel4.setFont(new java.awt.Font("Rockwell Nova Extra Bold", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -121,6 +124,11 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
             }
         });
 
@@ -236,7 +244,7 @@ public class frmProveedor extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
@@ -307,7 +315,7 @@ public class frmProveedor extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5)
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(separador, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 50, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -444,6 +452,21 @@ public class frmProveedor extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtBuscarKeyTyped
 
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+         String email = txtEmail.getText();
+        Pattern patron = Pattern.compile("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@"
+                + "[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$");
+        Matcher ma = patron.matcher(email);
+        if (ma.find()) {
+            //lblValidacion.setIcon(new ImageIcon(getClass().getResource("icons/login/visto.png")));
+            separador.setBackground(Color.green);
+        } else {
+            //lblValidacion.setIcon(new ImageIcon(getClass().getResource("icons/login/error.png")));
+            separador.setBackground(Color.red);
+        }
+    }//GEN-LAST:event_txtEmailKeyTyped
+
     private void listarProve() {
         DefaultTableModel dtm = (DefaultTableModel) tblProveedores.getModel();
         List<Proveedore> prove = daoProveedores.findProveedoreEntities();
@@ -476,10 +499,10 @@ public class frmProveedor extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator separador;
     private javax.swing.JTable tblProveedores;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
